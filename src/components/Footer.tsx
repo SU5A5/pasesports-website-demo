@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Instagram, MapPin, Phone, Mail, ExternalLink } from 'lucide-react';
+import { Instagram, MapPin, Phone, ExternalLink } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -79,10 +79,6 @@ export default function Footer() {
                 <Phone size={18} className="text-bright shrink-0 sm:w-5 sm:h-5" />
                 <span className="text-sm">+91 98808 71212</span>
               </a>
-            </li>
-            <li className="flex items-center gap-3 text-text-secondary">
-              <Mail size={18} className="text-bright shrink-0 sm:w-5 sm:h-5" />
-              <span className="text-sm">hello@pasesports.com</span>
             </li>
           </ul>
           <a

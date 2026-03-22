@@ -10,7 +10,6 @@ const today = new Date().toISOString().split('T')[0];
 const formSchema = z.object({
   fullName: z.string().min(2, 'Name must be at least 2 characters'),
   phone: z.string().regex(/^\+91[0-9]{10}$/, 'Enter a valid Indian number (e.g. +919880871212)'),
-  email: z.string().email('Invalid email address'),
   organization: z.string().optional(),
 
   serviceType: z.enum(['Court Booking', 'Training Program', 'Tournament Hosting']),
@@ -81,7 +80,7 @@ export default function GetQuote() {
 
   const nextStep = async () => {
     let fieldsToValidate: (keyof FormData)[] = [];
-    if (step === 1) fieldsToValidate = ['fullName', 'phone', 'email'];
+    if (step === 1) fieldsToValidate = ['fullName', 'phone'];
     if (step === 2) fieldsToValidate = ['serviceType', 'sport', 'facilityType', 'days', 'hoursPerDay', 'startDate', 'participants'];
 
     const isStepValid = await trigger(fieldsToValidate);
@@ -98,7 +97,6 @@ export default function GetQuote() {
     const message = `New Quote Request — Pase Sports
 Name: ${data.fullName}
 Phone: ${data.phone}
-Email: ${data.email}
 Service: ${data.serviceType}
 Sport: ${data.sport}
 Facility: ${data.facilityType}
@@ -212,19 +210,6 @@ Notes: ${data.notes || 'None'}`;
                         placeholder="+919880871212"
                       />
                       {errors.phone && <p className="text-error text-xs mt-2" role="alert">{errors.phone.message}</p>}
-                    </div>
-
-                    <div>
-                      <label htmlFor="email" className="block font-mono text-[11px] uppercase tracking-[0.3em] text-text-secondary mb-2">Email Address</label>
-                      <input
-                        id="email"
-                        {...register('email')}
-                        type="email"
-                        aria-invalid={!!errors.email}
-                        className={inputClass('email')}
-                        placeholder="john@example.com"
-                      />
-                      {errors.email && <p className="text-error text-xs mt-2" role="alert">{errors.email.message}</p>}
                     </div>
 
                     <div>
