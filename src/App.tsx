@@ -16,7 +16,7 @@ import NotFound from './pages/NotFound';
 
 export default function App() {
   return (
-    <Router>
+    <Router basename="/pasesports-website-demo">
       <ScrollToTop />
       <div className="min-h-screen flex flex-col relative">
         <Navbar />
