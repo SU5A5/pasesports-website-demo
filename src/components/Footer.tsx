@@ -10,7 +10,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
               <img
-                src="/logo.jpeg"
+                src={`${import.meta.env.BASE_URL}logo.jpeg`}
                 alt="Pase Sports"
                 className="h-12 w-12 sm:h-16 sm:w-16 object-contain rounded-full bg-white p-0.5 sm:p-1"
                 onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}

@@ -52,7 +52,7 @@ export default function Navbar() {
         }`}
       >
         <Link to="/" className="flex items-center shrink-0 gap-3">
-          <img src="/logo.jpeg" alt="Pase Sports" className="h-10 xl:h-[48px] w-auto object-contain rounded-full bg-white p-1 shadow-lg" />
+          <img src={`${import.meta.env.BASE_URL}logo.jpeg`} alt="Pase Sports" className="h-10 xl:h-[48px] w-auto object-contain rounded-full bg-white p-1 shadow-lg" />
           <span className="font-display text-xl xl:text-2xl tracking-wide text-text-primary">PASE SPORTS</span>
         </Link>
 
@@ -88,7 +88,7 @@ export default function Navbar() {
         }`}
       >
         <Link to="/" className="flex items-center shrink-0 gap-2">
-          <img src="/logo.jpeg" alt="Pase Sports" className="h-8 sm:h-[40px] w-auto object-contain rounded-full bg-white p-0.5 sm:p-1" />
+          <img src={`${import.meta.env.BASE_URL}logo.jpeg`} alt="Pase Sports" className="h-8 sm:h-[40px] w-auto object-contain rounded-full bg-white p-0.5 sm:p-1" />
           <span className="font-display text-lg sm:text-xl tracking-wide text-text-primary">PASE SPORTS</span>
         </Link>
         <button
@@ -112,7 +112,7 @@ export default function Navbar() {
           >
             <div className="flex justify-between items-center mb-8 sm:mb-16 px-2">
               <div className="flex items-center gap-2">
-                <img src="/logo.jpeg" alt="Pase Sports" className="h-8 sm:h-[40px] w-auto object-contain rounded-full bg-white p-0.5 sm:p-1" />
+                <img src={`${import.meta.env.BASE_URL}logo.jpeg`} alt="Pase Sports" className="h-8 sm:h-[40px] w-auto object-contain rounded-full bg-white p-0.5 sm:p-1" />
                 <span className="font-display text-lg sm:text-xl tracking-wide text-text-primary">PASE SPORTS</span>
               </div>
               <button

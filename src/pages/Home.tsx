@@ -48,7 +48,7 @@ export default function Home() {
             className="fixed inset-0 z-[2000] bg-void flex flex-col items-center justify-center px-4"
           >
             <motion.img
-              src="/logo.jpeg"
+              src={`${import.meta.env.BASE_URL}logo.jpeg`}
               alt="Pase Sports"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -77,7 +77,7 @@ export default function Home() {
           {loaderFinished && (
             <>
               <motion.img
-                src="/logo.jpeg"
+                src={`${import.meta.env.BASE_URL}logo.jpeg`}
                 alt="Pase Sports Logo"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
