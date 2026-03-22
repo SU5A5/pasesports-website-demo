@@ -136,7 +136,7 @@ export default function Home() {
         </div>
 
         {/* Sport Selector */}
-        <div className="absolute bottom-12 sm:bottom-[48px] left-1/2 -translate-x-1/2 z-20 w-full lg:w-auto px-3 sm:px-4">
+        <div className="absolute bottom-16 sm:bottom-[72px] left-1/2 -translate-x-1/2 z-20 w-full lg:w-auto px-3 sm:px-4">
           <div className="flex justify-center overflow-x-auto pb-2 lg:pb-0 snap-x hide-scrollbar gap-1.5 sm:gap-2">
             {SPORTS.map((sport) => (
               <button
