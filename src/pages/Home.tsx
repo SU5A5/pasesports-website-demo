@@ -117,12 +117,12 @@ export default function Home() {
                 className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-4 sm:mt-8 w-full sm:w-auto"
               >
                 <a
-                  href="https://playo.co"
+                  href="https://playo.co/venues/near-pes-university-bengaluru/pase-academy-near-pes-university-bengaluru"
                   target="_blank"
                   rel="noreferrer"
                   className="w-full sm:w-auto px-6 py-2.5 sm:py-[10px] rounded-[6px] bg-primary text-text-primary border border-accent hover:bg-accent hover:-translate-y-[2px] transition-all duration-200 ease-out shadow-none hover:shadow-[0_0_20px_rgba(58,123,213,0.4)] font-sans font-bold text-[14px] flex items-center justify-center"
                 >
-                  Book a Court
+                  Host Your Event
                 </a>
                 <button
                   onClick={() => document.getElementById('showcase')?.scrollIntoView({ behavior: 'smooth' })}

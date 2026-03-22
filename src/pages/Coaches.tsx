@@ -145,7 +145,7 @@ export default function Coaches() {
                   </blockquote>
 
                   <a
-                    href="https://playo.co"
+                    href="https://playo.co/venues/near-pes-university-bengaluru/pase-academy-near-pes-university-bengaluru"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full px-6 py-3 sm:py-4 rounded-md bg-primary text-text-primary border border-accent hover:bg-accent hover:-translate-y-0.5 transition-all shadow-[0_0_20px_rgba(58,123,213,0.3)] hover:shadow-[0_0_40px_rgba(58,123,213,0.5)] font-bold text-sm flex items-center justify-center gap-2"

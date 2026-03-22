@@ -132,7 +132,7 @@ export default function Facilities() {
                     <span className="font-bold text-bright text-lg sm:text-xl">{'\u20B9'}{facility.price}/hr</span>
                   </div>
                   <a
-                    href="https://playo.co"
+                    href="https://playo.co/venues/near-pes-university-bengaluru/pase-academy-near-pes-university-bengaluru"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-md bg-primary text-text-primary border border-accent hover:bg-accent transition-colors font-bold text-xs sm:text-sm flex items-center gap-1.5 sm:gap-2"

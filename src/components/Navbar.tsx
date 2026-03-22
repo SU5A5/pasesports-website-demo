@@ -77,7 +77,7 @@ export default function Navbar() {
           to="/get-a-quote"
           className="px-4 xl:px-[24px] py-[10px] text-[13px] xl:text-[14px] font-sans font-bold rounded-[6px] bg-primary text-text-primary border border-accent hover:bg-accent hover:-translate-y-[2px] transition-all duration-200 ease-out shadow-none hover:shadow-[0_0_20px_rgba(58,123,213,0.4)] whitespace-nowrap"
         >
-          Book a Court →
+          Host Your Event →
         </Link>
       </nav>
 
@@ -148,7 +148,7 @@ export default function Navbar() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="mt-4 sm:mt-8 px-8 py-3 sm:px-[32px] sm:py-[14px] text-base sm:text-[18px] font-sans font-bold rounded-[6px] bg-primary text-text-primary border border-accent"
               >
-                Book a Court →
+                Host Your Event →
               </Link>
             </div>
           </motion.div>
