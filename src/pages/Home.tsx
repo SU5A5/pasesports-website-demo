@@ -20,6 +20,7 @@ export default function Home() {
     return sessionStorage.getItem('loaderFinished') === 'true';
   });
   const showcaseRef = useRef<HTMLDivElement>(null);
+  const hasHinted = useRef(false);
 
   useEffect(() => {
     if (loaderFinished) return;
@@ -30,6 +31,29 @@ export default function Home() {
     }, 2600);
     return () => clearTimeout(timer);
   }, [loaderFinished]);
+
+  useEffect(() => {
+    const el = showcaseRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasHinted.current) {
+          hasHinted.current = true;
+          setTimeout(() => {
+            el.scrollTo({ left: 100, behavior: 'smooth' });
+            setTimeout(() => {
+              el.scrollTo({ left: 0, behavior: 'smooth' });
+            }, 600);
+          }, 300);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const scrollShowcase = (direction: 'left' | 'right') => {
     if (!showcaseRef.current) return;
