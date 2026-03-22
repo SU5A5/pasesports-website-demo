@@ -231,12 +231,14 @@ export default function Home() {
 
               <div className="absolute bottom-6 sm:bottom-8 left-6 sm:left-8 right-6 sm:right-8 flex flex-col items-start">
                 <h3 className="font-display text-[28px] sm:text-[36px] mb-4 sm:mb-6">{sport}</h3>
-                <Link
-                  to="/get-a-quote"
+                <a
+                  href="https://playo.co/venues/near-pes-university-bengaluru/pase-academy-near-pes-university-bengaluru"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="opacity-100 sm:opacity-0 sm:translate-y-[8px] sm:group-hover:opacity-100 sm:group-hover:translate-y-0 transition-all duration-250 ease-out px-5 py-2.5 rounded-[6px] bg-primary text-text-primary border border-accent font-sans font-bold text-[13px] sm:text-[14px] flex items-center gap-2"
                 >
                   Book Now <ArrowRight size={16} />
-                </Link>
+                </a>
               </div>
             </div>
           ))}
