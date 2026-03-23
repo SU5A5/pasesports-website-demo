@@ -7,9 +7,9 @@ import Hero3D from '../components/Hero3D';
 const SPORTS = ['Badminton', 'Pickleball', 'Tennis', 'Football', 'Cricket'];
 
 const SPORT_IMAGES: Record<string, string> = {
-  Badminton: 'https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?q=80&w=800&auto=format&fit=crop',
+  Badminton: `${import.meta.env.BASE_URL}badminton.avif`,
   Pickleball: `${import.meta.env.BASE_URL}pickleball.webp`,
-  Tennis: 'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?q=80&w=800&auto=format&fit=crop',
+  Tennis: `${import.meta.env.BASE_URL}tennis.jpg`,
   Football: 'https://images.unsplash.com/photo-1575361204480-aadea25e6e68?q=80&w=800&auto=format&fit=crop',
   Cricket: `${import.meta.env.BASE_URL}cricket.avif`,
 };
@@ -253,7 +253,7 @@ export default function Home() {
               className="snap-start shrink-0 w-[75vw] sm:w-[60vw] md:w-[45vw] lg:w-[400px] h-[400px] sm:h-[480px] lg:h-[560px] rounded-xl overflow-hidden relative group cursor-pointer border border-border bg-surface transition-all duration-300 hover:-translate-y-3 hover:border-accent hover:shadow-[0_24px_48px_rgba(43,91,168,0.3)]"
             >
               <div
-                className="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-75 group-hover:scale-105 transition-all duration-700"
+                className="absolute inset-0 bg-cover bg-center opacity-70 transition-all duration-700"
                 style={{ backgroundImage: `url(${SPORT_IMAGES[sport]})` }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-void via-void/60 to-transparent h-[70%] mt-auto" />
