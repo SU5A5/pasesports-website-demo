@@ -12,6 +12,7 @@ import Facilities from './pages/Facilities';
 import Coaches from './pages/Coaches';
 import Alumni from './pages/Alumni';
 import GetQuote from './pages/GetQuote';
+import AlumniSession from './pages/AlumniSession';
 import NotFound from './pages/NotFound';
 
 export default function App() {
@@ -32,6 +33,7 @@ export default function App() {
             <Route path="/facilities" element={<Facilities />} />
             <Route path="/coaches" element={<Coaches />} />
             <Route path="/alumni" element={<Alumni />} />
+            <Route path="/alumni-sessions" element={<AlumniSession />} />
             <Route path="/get-a-quote" element={<GetQuote />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

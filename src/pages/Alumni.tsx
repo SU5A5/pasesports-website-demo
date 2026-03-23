@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowRight, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -178,6 +179,31 @@ export default function Alumni() {
             </motion.div>
           ))}
         </div>
+      </section>
+
+      {/* Play With The Pros CTA */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 mb-16 sm:mb-32">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="rounded-2xl bg-surface border border-border p-8 sm:p-12 lg:p-16 text-center relative overflow-hidden"
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/15 via-transparent to-transparent" />
+          <div className="relative z-10">
+            <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-bright mb-3 sm:mb-4">Exclusive Experience</p>
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl mb-4 sm:mb-6">Play With The Pros.</h2>
+            <p className="font-sans text-[14px] sm:text-[16px] text-text-secondary max-w-[480px] mx-auto mb-8 sm:mb-10 leading-[1.65]">
+              Book a 1-on-1 session with our top alumni. Experience their intensity, learn their strategies, and take your game to the next level.
+            </p>
+            <Link
+              to="/alumni-sessions"
+              className="inline-flex px-8 sm:px-10 py-3 sm:py-4 rounded-[6px] bg-primary text-text-primary border border-accent hover:bg-accent hover:-translate-y-[2px] transition-all shadow-none hover:shadow-[0_0_24px_rgba(58,123,213,0.4)] font-sans font-bold text-[14px] sm:text-[16px] items-center gap-2"
+            >
+              View Sessions <ArrowRight size={18} />
+            </Link>
+          </div>
+        </motion.div>
       </section>
 
       {/* Testimonial Carousel */}

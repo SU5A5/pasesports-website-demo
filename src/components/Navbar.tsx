@@ -70,6 +70,7 @@ export default function Navbar() {
     { name: 'Facilities', path: '/facilities' },
     { name: 'Coaches', path: '/coaches' },
     { name: 'Alumni', path: '/alumni' },
+    { name: 'Alumni Sessions', path: '/alumni-sessions' },
     { name: 'Get a Quote', path: '/get-a-quote' },
   ];
 
