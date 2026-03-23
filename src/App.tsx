@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import FloatingActions from './components/FloatingActions';
 import Home from './pages/Home';
 import Facilities from './pages/Facilities';
 import Coaches from './pages/Coaches';
@@ -39,6 +40,7 @@ export default function App() {
           </Routes>
         </main>
         <Footer />
+        <FloatingActions />
       </div>
     </Router>
   );
