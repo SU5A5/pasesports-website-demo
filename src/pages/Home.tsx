@@ -41,14 +41,14 @@ export default function Home() {
         if (entry.isIntersecting && !hasHinted.current) {
           hasHinted.current = true;
           setTimeout(() => {
-            el.scrollTo({ left: 100, behavior: 'smooth' });
+            el.scrollTo({ left: 200, behavior: 'smooth' });
             setTimeout(() => {
               el.scrollTo({ left: 0, behavior: 'smooth' });
-            }, 600);
-          }, 300);
+            }, 800);
+          }, 500);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 }
     );
 
     observer.observe(el);
