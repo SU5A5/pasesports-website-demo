@@ -139,8 +139,15 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0.55, ease: "easeOut" }}
                 className="font-mono text-[10px] sm:text-[11px] text-text-muted flex items-center gap-1.5 mb-2"
               >
-                <MapPin size={12} className="text-bright" />
-                Bangalore, India
+                <a
+                  href="https://maps.google.com/?q=Pase+Academy+near+PES+University+Bengaluru"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 hover:text-bright transition-colors"
+                >
+                  <MapPin size={12} className="text-bright" />
+                  Bangalore, India
+                </a>
               </motion.p>
 
               <motion.div
