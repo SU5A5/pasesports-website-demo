@@ -10,8 +10,8 @@ const FACILITIES = [
   { id: 2, name: 'Court B — Tennis', sport: 'Tennis', surface: 'Hard Court', lighting: 'LED Floodlights', live: false, price: 800, img: 'https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=800&auto=format&fit=crop' },
   { id: 3, name: 'Turf 1 — Football', sport: 'Football', surface: 'AstroTurf', lighting: 'Stadium Lights', live: true, price: 1500, img: 'https://images.unsplash.com/photo-1575361204480-aadea25e6e68?q=80&w=800&auto=format&fit=crop' },
   { id: 4, name: 'Hall 1 — Badminton', sport: 'Badminton', surface: 'Wooden', lighting: 'Indoor LED', live: true, price: 500, img: 'https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?q=80&w=800&auto=format&fit=crop' },
-  { id: 5, name: 'Court 1 — Pickleball', sport: 'Pickleball', surface: 'Hard Court', lighting: 'LED Floodlights', live: true, price: 600, img: 'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?q=80&w=800&auto=format&fit=crop' },
-  { id: 6, name: 'Pitch A — Cricket', sport: 'Cricket', surface: 'Turf Wicket', lighting: 'Stadium Lights', live: false, price: 2000, img: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=800&auto=format&fit=crop' },
+  { id: 5, name: 'Court 1 — Pickleball', sport: 'Pickleball', surface: 'Hard Court', lighting: 'LED Floodlights', live: true, price: 600, img: `${import.meta.env.BASE_URL}pickleball.webp` },
+  { id: 6, name: 'Pitch A — Cricket', sport: 'Cricket', surface: 'Turf Wicket', lighting: 'Stadium Lights', live: false, price: 2000, img: `${import.meta.env.BASE_URL}cricket.avif` },
 ];
 
 const AMENITIES = [

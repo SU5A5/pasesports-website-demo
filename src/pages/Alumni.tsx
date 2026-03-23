@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Quote } from 'lucide-react';
+import { ArrowRight, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const ALUMNI = [
   { id: 1, name: 'Sarah Jenkins', sport: 'Tennis', year: '2023', achievement: 'State Champion 2023', level: 'Professional', image: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=800&auto=format&fit=crop', featured: true },
@@ -20,6 +20,20 @@ const TESTIMONIALS = [
 export default function Alumni() {
   const [activeSport, setActiveSport] = useState('All');
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  const nextTestimonial = useCallback(() => {
+    setCurrentTestimonial((prev) => (prev + 1) % TESTIMONIALS.length);
+  }, []);
+
+  const prevTestimonial = useCallback(() => {
+    setCurrentTestimonial((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
+  }, []);
+
+  // Auto-advance testimonials every 5 seconds
+  useEffect(() => {
+    const timer = setInterval(nextTestimonial, 5000);
+    return () => clearInterval(timer);
+  }, [nextTestimonial]);
 
   const filteredAlumni = activeSport === 'All'
     ? ALUMNI.filter(a => !a.featured)
@@ -171,6 +185,21 @@ export default function Alumni() {
         <Quote size={48} className="sm:w-16 sm:h-16 text-surface-raised mx-auto mb-4 sm:mb-8 opacity-50" />
 
         <div className="relative min-h-[200px] sm:min-h-[220px] md:min-h-[200px]">
+          <button
+            onClick={prevTestimonial}
+            aria-label="Previous testimonial"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full border border-border hover:border-bright text-text-secondary hover:text-bright transition-colors flex items-center justify-center bg-surface/50 backdrop-blur-sm"
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button
+            onClick={nextTestimonial}
+            aria-label="Next testimonial"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full border border-border hover:border-bright text-text-secondary hover:text-bright transition-colors flex items-center justify-center bg-surface/50 backdrop-blur-sm"
+          >
+            <ChevronRight size={20} />
+          </button>
+
           {TESTIMONIALS.map((t, i) => (
             <motion.div
               key={t.id}
@@ -181,7 +210,7 @@ export default function Alumni() {
                 pointerEvents: currentTestimonial === i ? 'auto' : 'none'
               }}
               transition={{ duration: 0.5 }}
-              className="absolute inset-0 flex flex-col items-center justify-center"
+              className="absolute inset-0 flex flex-col items-center justify-center px-12 sm:px-16"
             >
               <p className="font-display text-2xl sm:text-3xl md:text-4xl leading-tight mb-4 sm:mb-8 text-text-primary">
                 "{t.quote}"

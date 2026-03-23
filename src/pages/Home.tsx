@@ -1,17 +1,17 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { ChevronDown, ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
+import { ChevronDown, ChevronLeft, ChevronRight, ArrowRight, MapPin } from 'lucide-react';
 import Hero3D from '../components/Hero3D';
 
 const SPORTS = ['Badminton', 'Pickleball', 'Tennis', 'Football', 'Cricket'];
 
 const SPORT_IMAGES: Record<string, string> = {
   Badminton: 'https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?q=80&w=800&auto=format&fit=crop',
-  Pickleball: 'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?q=80&w=800&auto=format&fit=crop',
+  Pickleball: `${import.meta.env.BASE_URL}pickleball.webp`,
   Tennis: 'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?q=80&w=800&auto=format&fit=crop',
   Football: 'https://images.unsplash.com/photo-1575361204480-aadea25e6e68?q=80&w=800&auto=format&fit=crop',
-  Cricket: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=800&auto=format&fit=crop',
+  Cricket: `${import.meta.env.BASE_URL}cricket.avif`,
 };
 
 export default function Home() {
@@ -28,7 +28,7 @@ export default function Home() {
     const timer = setTimeout(() => {
       setLoaderFinished(true);
       sessionStorage.setItem('loaderFinished', 'true');
-    }, 2600);
+    }, 1500);
     return () => clearTimeout(timer);
   }, [loaderFinished]);
 
@@ -83,7 +83,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.4, duration: 0.4 }}
+              transition={{ delay: 0.7, duration: 0.4 }}
               className="mt-4 sm:mt-6 font-mono text-[11px] sm:text-[13px] text-bright tracking-[0.3em] sm:tracking-[0.4em] uppercase"
             >
               Play Beyond Limits
@@ -133,6 +133,15 @@ export default function Home() {
               >
                 World-class courts. Elite coaching. Your game, elevated.
               </motion.p>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.55, ease: "easeOut" }}
+                className="font-mono text-[10px] sm:text-[11px] text-text-muted flex items-center gap-1.5 mb-2"
+              >
+                <MapPin size={12} className="text-bright" />
+                Bangalore, India
+              </motion.p>
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -143,10 +152,10 @@ export default function Home() {
                 <a
                   href="https://playo.co/venues/near-pes-university-bengaluru/pase-academy-near-pes-university-bengaluru"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="w-full sm:w-auto px-6 py-2.5 sm:py-[10px] rounded-[6px] bg-primary text-text-primary border border-accent hover:bg-accent hover:-translate-y-[2px] transition-all duration-200 ease-out shadow-none hover:shadow-[0_0_20px_rgba(58,123,213,0.4)] font-sans font-bold text-[14px] flex items-center justify-center"
                 >
-                  Host Your Event
+                  Book Now
                 </a>
                 <button
                   onClick={() => document.getElementById('showcase')?.scrollIntoView({ behavior: 'smooth' })}
@@ -244,10 +253,10 @@ export default function Home() {
               className="snap-start shrink-0 w-[75vw] sm:w-[60vw] md:w-[45vw] lg:w-[400px] h-[400px] sm:h-[480px] lg:h-[560px] rounded-xl overflow-hidden relative group cursor-pointer border border-border bg-surface transition-all duration-300 hover:-translate-y-3 hover:border-accent hover:shadow-[0_24px_48px_rgba(43,91,168,0.3)]"
             >
               <div
-                className="absolute inset-0 bg-cover bg-center opacity-40 group-hover:scale-105 transition-transform duration-700"
+                className="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-75 group-hover:scale-105 transition-all duration-700"
                 style={{ backgroundImage: `url(${SPORT_IMAGES[sport]})` }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-void via-void/85 to-transparent h-[85%] mt-auto" />
+              <div className="absolute inset-0 bg-gradient-to-t from-void via-void/60 to-transparent h-[70%] mt-auto" />
 
               <div className="absolute top-4 sm:top-6 right-4 sm:right-6 px-3 py-1.5 rounded-[100px] bg-[rgba(13,27,42,0.9)] backdrop-blur-sm">
                 <span className="font-mono text-[10px] sm:text-[11px] text-bright">{i + 2} Courts</span>
@@ -259,7 +268,7 @@ export default function Home() {
                   href="https://playo.co/venues/near-pes-university-bengaluru/pase-academy-near-pes-university-bengaluru"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="opacity-100 sm:opacity-0 sm:translate-y-[8px] sm:group-hover:opacity-100 sm:group-hover:translate-y-0 transition-all duration-250 ease-out px-5 py-2.5 rounded-[6px] bg-primary text-text-primary border border-accent font-sans font-bold text-[13px] sm:text-[14px] flex items-center gap-2"
+                  className="opacity-100 transition-all duration-250 ease-out px-5 py-2.5 rounded-[6px] bg-primary text-text-primary border border-accent font-sans font-bold text-[13px] sm:text-[14px] flex items-center gap-2 hover:bg-accent hover:-translate-y-[2px] hover:shadow-[0_0_20px_rgba(58,123,213,0.4)]"
                 >
                   Book Now <ArrowRight size={16} />
                 </a>

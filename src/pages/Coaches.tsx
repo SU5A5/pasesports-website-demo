@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, X } from 'lucide-react';
 
@@ -13,6 +13,40 @@ const COACHES = [
 
 export default function Coaches() {
   const [selectedCoach, setSelectedCoach] = useState<typeof COACHES[0] | null>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  const closeModal = useCallback(() => setSelectedCoach(null), []);
+
+  // Focus trap + Escape key for modal
+  useEffect(() => {
+    if (!selectedCoach) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeModal();
+        return;
+      }
+      if (e.key === 'Tab' && modalRef.current) {
+        const focusable = modalRef.current.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last?.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first?.focus();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    // Focus the modal on open
+    modalRef.current?.focus();
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [selectedCoach, closeModal]);
 
   return (
     <div className="bg-void text-text-primary min-h-screen pt-24 sm:pt-32 pb-16 sm:pb-24">
@@ -98,11 +132,16 @@ export default function Coaches() {
               className="fixed inset-0 z-50 bg-void/80 backdrop-blur-md"
             />
             <motion.div
+              ref={modalRef}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="coach-modal-title"
+              tabIndex={-1}
               initial={{ opacity: 0, scale: 0.94, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.94, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="fixed z-50 inset-2 sm:inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full md:max-w-4xl md:max-h-[90vh] overflow-y-auto bg-surface-raised border border-border rounded-2xl shadow-2xl"
+              className="fixed z-50 inset-2 sm:inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full md:max-w-4xl md:max-h-[90vh] overflow-y-auto bg-surface-raised border border-border rounded-2xl shadow-2xl outline-none"
             >
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="h-[200px] sm:h-[260px] md:h-full relative">
@@ -121,7 +160,7 @@ export default function Coaches() {
                   <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.3em] text-bright mb-3 sm:mb-4 block">
                     {selectedCoach.sport} · {selectedCoach.experience}
                   </span>
-                  <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl mb-4 sm:mb-8">{selectedCoach.name}</h2>
+                  <h2 id="coach-modal-title" className="font-display text-3xl sm:text-4xl lg:text-5xl mb-4 sm:mb-8">{selectedCoach.name}</h2>
 
                   <div className="mb-4 sm:mb-8">
                     <h4 className="font-bold text-xs sm:text-sm text-text-secondary mb-2 sm:mb-4 uppercase tracking-wider">Biography</h4>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -22,6 +22,9 @@ export default function Navbar() {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const closeMobileMenu = useCallback(() => setIsMobileMenuOpen(false), []);
+
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -31,6 +34,36 @@ export default function Navbar() {
     }
     return () => { document.body.style.overflow = ''; };
   }, [isMobileMenuOpen]);
+
+  // Focus trap + Escape key for mobile menu
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeMobileMenu();
+        return;
+      }
+      if (e.key === 'Tab' && mobileMenuRef.current) {
+        const focusable = mobileMenuRef.current.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last?.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first?.focus();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    mobileMenuRef.current?.focus();
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isMobileMenuOpen, closeMobileMenu]);
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -61,6 +94,7 @@ export default function Navbar() {
             <Link
               key={link.name}
               to={link.path}
+              aria-current={location.pathname === link.path ? 'page' : undefined}
               className={`text-[13px] xl:text-[14px] font-sans transition-colors relative group whitespace-nowrap ${
                 location.pathname === link.path ? 'text-bright' : 'text-text-secondary hover:text-text-primary'
               }`}
@@ -104,11 +138,16 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
+            ref={mobileMenuRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
+            tabIndex={-1}
             initial={{ opacity: 0, y: '-10px' }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '-10px' }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[2000] bg-void flex flex-col p-4 sm:p-6 overflow-y-auto"
+            className="fixed inset-0 z-[2000] bg-void flex flex-col p-4 sm:p-6 overflow-y-auto outline-none"
           >
             <div className="flex justify-between items-center mb-8 sm:mb-16 px-2">
               <div className="flex items-center gap-2">
@@ -136,6 +175,7 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   to={link.path}
+                  aria-current={location.pathname === link.path ? 'page' : undefined}
                   className={`font-display text-[32px] sm:text-[40px] md:text-[48px] hover:text-bright transition-colors ${
                     location.pathname === link.path ? 'text-bright' : 'text-text-primary'
                   }`}
